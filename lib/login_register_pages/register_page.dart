@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vet_mobile_app/theme/text_styles.dart';
 import 'package:vet_mobile_app/widgets/navigate_button.dart';
 import 'package:vet_mobile_app/widgets/sign_in_to_google.dart';
@@ -170,266 +171,309 @@ class _RegistScreenState extends State<RegistScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Катталуу', style: TextStyles.appBarTitle)),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 200,
-                bottom: 80,
-                right: 0,
-                top: 20,
-              ),
-              child: InkWell(
-                onTap: () {},
-                child: Text(
-                  'Өткөрүп жиберүү',
-                  textAlign:
-                      TextAlign.right, // Дополнительно выравниваем текст внутри
-                  style: TextStyles.buttonTextStyle.copyWith(
-                    color: Color(0xff01A560),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
-              child: Stack(
-                clipBehavior:
-                    Clip.none, // Позволяет тексту выходить за границы Stack
-                children: [
-                  Container(
-                    width: 400,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: UserEmailPasswordline(
-                        controller: nameController,
-                        hinText: 'Таштанова Акылай',
-                        icon: 'assets/Vector-12.svg',
-                        errorText: nameError,
-                        onChanged: (value) {
-                          setState(() {
-                            if (value.isNotEmpty) {
-                              nameError = null;
-                            }
-                          });
-                        },
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                            RegExp(r'[a-zA-Zа-яА-ЯёЁ\s]'),
-                          ), // Только буквы и пробелы
-                        ],
-                      ),
-                    ),
-                  ),
-                  //Текст над строкой
-                  Positioned(
-                    top: -28,
-                    left: 1,
-                    child: Container(
-                      color: Colors.white,
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: Text(
-                        'Толук аты жөну',
-                        style: TextStyles.buttonTextStyle.copyWith(
-                          color: Color(0xff878787),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
-              child: Stack(
-                clipBehavior:
-                    Clip.none, // Позволяет тексту выходить за границы Stack
-                children: [
-                  Container(
-                    width: 400,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: UserEmailPasswordline(
-                        controller: phoneController,
-                        hinText: '996 302 345 656 же email',
-                        icon: 'assets/Vector-10.svg',
-                        errorText: phoneError,
-                        onChanged: (value) {
-                          setState(() {
-                            if (value.isNotEmpty) phoneError = null;
-                          });
-                        },
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                            RegExp(r'[a-zA-Z0-9@.]'),
-                          ),
-                          LengthLimitingTextInputFormatter(60),
-                        ],
-                      ),
-                    ),
-                  ),
-                  //Текси над строкой
-                  Positioned(
-                    top: -28,
-                    left: 1,
-                    child: Container(
-                      color: Colors.white,
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: Text(
-                        'Телефон номери',
-                        style: TextStyles.buttonTextStyle.copyWith(
-                          color: Color(0xff878787),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    width: 400,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: UserEmailPasswordline(
-                        controller: passwordController,
-                        hinText: '*********',
-                        icon: 'assets/clarity_eye-line.svg',
-                        errorText: passwordError,
-                        obsureText: true,
-                        onChanged: (value) {
-                          setState(() {
-                            if (value.isNotEmpty) passwordError = null;
-                          });
-                        },
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                            RegExp(r'[a-zA-Z0-9]'),
-                          ),
-                          LengthLimitingTextInputFormatter(8),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: -28,
-                    left: 1,
-                    child: Container(
-                      color: Colors.white,
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: Text(
-                        'Сыр сөз',
-                        style: TextStyles.buttonTextStyle.copyWith(
-                          color: Color(0xff878787),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Container(
-                    width: 400,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: UserEmailPasswordline(
-                        controller: confirmPasswordController,
-                        hinText: '*********',
-                        obsureText: true,
-                        icon: 'assets/clarity_eye-line.svg',
-                        errorText: confirmPasswordError,
-                        onChanged: (value) {
-                          setState(() {
-                            if (value.isNotEmpty) confirmPasswordError = null;
-                          });
-                        },
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(
-                            RegExp(r'[a-zA-Z0-9]'),
-                          ),
-                          LengthLimitingTextInputFormatter(8),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: -28,
-                    left: 1,
-                    child: Container(
-                      color: Colors.white,
-                      padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: Text(
-                        'Сыр сөздү ырастоо',
-                        style: TextStyles.buttonTextStyle.copyWith(
-                          color: Color(0xff878787),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 46),
-            NavigateButton(
-              text: 'Катталуу',
-              onPressed: isLoading ? null : register,
-              borderRadius: BorderRadius.circular(24),
-              minimumSize: Size(350, 48),
-              isLoading: isLoading,
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+            child: Column(
               children: [
-                Text(
-                  'Катталган аккаунтуңуз барбы?',
-                  style: TextStyles.buttonTextStyle.copyWith(
-                    color: Color(0xff878787),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 13,
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 200,
+                    bottom: 80,
+                    right: 0,
+                    top: 20,
+                  ),
+                  child: InkWell(
+                    onTap: () {},
+                    child: Text(
+                      'Өткөрүп жиберүү',
+                      textAlign: TextAlign.right,
+                      style: TextStyles.buttonTextStyle.copyWith(
+                        color: Color(0xff01A560),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(width: 15),
-                InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
+                Padding(
+                  padding: const EdgeInsets.only(left: 40, right: 40),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        width: 400,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: UserEmailPasswordline(
+                            controller: nameController,
+                            hinText: 'Таштанова Акылай',
+                            icon: 'assets/Vector-12.svg',
+                            errorText: nameError,
+                            onChanged: (value) {
+                              setState(() {
+                                if (value.isNotEmpty) {
+                                  nameError = null;
+                                }
+                              });
+                            },
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp(r'[a-zA-Zа-яА-ЯёЁ\s]'),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: -28,
+                        left: 1,
+                        child: Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: Text(
+                            'Толук аты жөнү',
+                            style: TextStyles.buttonTextStyle.copyWith(
+                              color: Color(0xff878787),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40, right: 40),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        width: 400,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: UserEmailPasswordline(
+                            controller: phoneController,
+                            hinText: '996 302 345 656 же email',
+                            icon: 'assets/Vector-10.svg',
+                            errorText: phoneError,
+                            onChanged: (value) {
+                              setState(() {
+                                if (value.isNotEmpty) phoneError = null;
+                              });
+                            },
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp(r'[a-zA-Z0-9@.]'),
+                              ),
+                              LengthLimitingTextInputFormatter(60),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: -28,
+                        left: 1,
+                        child: Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: Text(
+                            'Телефон номери',
+                            style: TextStyles.buttonTextStyle.copyWith(
+                              color: Color(0xff878787),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40, right: 40),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        width: 400,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: UserEmailPasswordline(
+                            controller: passwordController,
+                            hinText: '*********',
+                            icon: 'assets/clarity_eye-line.svg',
+                            errorText: passwordError,
+                            obsureText: true,
+                            onChanged: (value) {
+                              setState(() {
+                                if (value.isNotEmpty) passwordError = null;
+                              });
+                            },
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp(r'[a-zA-Z0-9]'),
+                              ),
+                              LengthLimitingTextInputFormatter(8),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: -28,
+                        left: 1,
+                        child: Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: Text(
+                            'Сыр сөз',
+                            style: TextStyles.buttonTextStyle.copyWith(
+                              color: Color(0xff878787),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40, right: 40),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        width: 400,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Center(
+                          child: UserEmailPasswordline(
+                            controller: confirmPasswordController,
+                            hinText: '*********',
+                            obsureText: true,
+                            icon: 'assets/clarity_eye-line.svg',
+                            errorText: confirmPasswordError,
+                            onChanged: (value) {
+                              setState(() {
+                                if (value.isNotEmpty)
+                                  confirmPasswordError = null;
+                              });
+                            },
+                            inputFormatters: [
+                              FilteringTextInputFormatter.allow(
+                                RegExp(r'[a-zA-Z0-9]'),
+                              ),
+                              LengthLimitingTextInputFormatter(8),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: -28,
+                        left: 1,
+                        child: Container(
+                          color: Colors.white,
+                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          child: Text(
+                            'Сыр сөздү ырастоо',
+                            style: TextStyles.buttonTextStyle.copyWith(
+                              color: Color(0xff878787),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 46),
+                NavigateButton(
+                  text: 'Катталуу',
+                  onPressed: isLoading ? null : register,
+                  borderRadius: BorderRadius.circular(24),
+                  minimumSize: Size(350, 48),
+                  isLoading: isLoading,
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Катталган аккаунтуңуз барбы?',
+                      style: TextStyles.buttonTextStyle.copyWith(
+                        color: Color(0xff878787),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 13,
+                      ),
+                    ),
+                    SizedBox(width: 15),
+                    InkWell(
+                      onTap: () {
+                        context.go('/login');
+                      },
+                      child: Text(
+                        'Бул жерден кириңиз',
+                        style: TextStyles.buttonTextStyle.copyWith(
+                          color: Color(0xff01A560),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 13,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        color: Color(0xff99dbbf),
+                        thickness: 1,
+                        indent: 40,
+                        endIndent: 10,
+                      ),
+                    ),
+                    Text(
+                      'Же',
+                      style: TextStyles.buttonTextStyle.copyWith(
+                        color: Color(0xff878787),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 13,
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        color: Color(0xff99dbbf),
+                        thickness: 1,
+                        indent: 10,
+                        endIndent: 40,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                ButtonSignInToGoogle(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
                   child: Text(
-                    'Бул жерден кириңиз',
+                    '© МаралАкгул.Баардык укуктар корголгон',
                     style: TextStyles.buttonTextStyle.copyWith(
-                      color: Color(0xff01A560),
+                      color: Colors.grey,
                       fontWeight: FontWeight.w400,
                       fontSize: 13,
                     ),
@@ -437,50 +481,7 @@ class _RegistScreenState extends State<RegistScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Divider(
-                    color: Color(0xff99dbbf),
-                    thickness: 1,
-                    indent: 40,
-                    endIndent: 10,
-                  ),
-                ),
-                Text(
-                  'Же',
-                  style: TextStyles.buttonTextStyle.copyWith(
-                    color: Color(0xff878787),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 13,
-                  ),
-                ),
-                Expanded(
-                  child: Divider(
-                    color: Color(0xff99dbbf),
-                    thickness: 1,
-                    indent: 10,
-                    endIndent: 40,
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            ButtonSignInToGoogle(),
-            Padding(
-              padding: const EdgeInsets.only(top: 40),
-              child: Text(
-                '© МаралАкгул.Баардык укуктар корголгон',
-                style: TextStyles.buttonTextStyle.copyWith(
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 13,
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

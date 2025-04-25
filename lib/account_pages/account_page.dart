@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:vet_mobile_app/login_register_pages/account_edit_page.dart';
+import 'package:vet_mobile_app/account_pages/account_edit_page.dart';
 import 'package:vet_mobile_app/theme/text_styles.dart';
 
 //e8f6f1

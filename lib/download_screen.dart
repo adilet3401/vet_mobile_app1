@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-import 'package:vet_mobile_app/pages/flash_screen_page.dart';
-
-// import 'package:sabr/widgets/home_page.dart'; // Для таймера
+import 'package:go_router/go_router.dart'; // Импорт GoRouter
 
 class DownloadScreen extends StatefulWidget {
   const DownloadScreen({super.key});
@@ -30,22 +27,8 @@ class _DownloadScreenState extends State<DownloadScreen>
 
     Timer(const Duration(seconds: 2), () {
       _animationController.forward().then((_) {
-        // Переход на главный экран после завершения анимации
-        Navigator.pushReplacement(
-          context,
-          PageRouteBuilder(
-            transitionDuration: const Duration(milliseconds: 500),
-            pageBuilder: (_, __, ___) => FlashScreen(),
-            transitionsBuilder: (
-              _,
-              Animation<double> animation,
-              __,
-              Widget child,
-            ) {
-              return FadeTransition(opacity: animation, child: child);
-            },
-          ),
-        );
+        // Используем GoRouter для перехода
+        context.go('/flash_screen'); // Переход на маршрут '/home'
       });
     });
   }

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vet_mobile_app/login_register_pages/forgot_password_screen.dart';
 import 'package:vet_mobile_app/login_register_pages/register_page.dart';
 import 'package:vet_mobile_app/pages/menu_page.dart';
@@ -17,12 +18,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  // final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final FirebaseAuth auth = FirebaseAuth.instance;
-  // String? emailError; // Переменная для хранения ошибки email
-  String? passwordError; // Переменная для хранения ошибки пароля
+  String? passwordError;
   String? phoneError;
   bool isLoading = false;
 
@@ -30,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       passwordError = null;
       phoneError = null;
-      isLoading = true; // Показываем индикатор загрузки
+      isLoading = true;
     });
 
     String input = phoneController.text.trim();
@@ -39,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (input.isEmpty) {
       setState(() {
         phoneError = 'Номер же email жазыныз';
-        isLoading = false; // Скрываем индикатор загрузки
+        isLoading = false;
       });
       return;
     }
@@ -47,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (password.isEmpty) {
       setState(() {
         passwordError = 'Сыр сөз жазыныз';
-        isLoading = false; // Скрываем индикатор загрузки
+        isLoading = false;
       });
       return;
     }
@@ -55,37 +54,33 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       String email;
 
-      // Проверяем, это номер телефона или email
       if (RegExp(r'^\d+$').hasMatch(input)) {
-        // Если это номер телефона
         if (!input.startsWith('996')) {
-          input = '996$input'; // Добавляем код страны
+          input = '996$input';
         }
 
         if (input.length != 12) {
           setState(() {
             phoneError = "Номер телефона неверный";
-            isLoading = false; // Скрываем индикатор загрузки
+            isLoading = false;
           });
           return;
         }
 
-        email = '$input@example.com'; // Преобразуем номер в email
+        email = '$input@example.com';
       } else {
-        // Если это email
         email = input;
       }
 
-      // Выполняем вход
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => MenuPage()),
-      );
+      context.go('/menu');
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(builder: (context) => MenuPage()),
+      // );
       print('Signed in!');
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -102,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     } finally {
       setState(() {
-        isLoading = false; // Скрываем индикатор загрузки
+        isLoading = false;
       });
     }
   }
@@ -113,9 +108,9 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: Text('Аккаунтка кирүү', style: TextStyles.appBarTitle),
       ),
-      body: Stack(
-        children: [
-          Padding(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -131,9 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () {},
                     child: Text(
                       'Өткөрүп жиберүү',
-                      textAlign:
-                          TextAlign
-                              .right, // Дополнительно выравниваем текст внутри
+                      textAlign: TextAlign.right,
                       style: TextStyles.buttonTextStyle.copyWith(
                         color: Color(0xff01A560),
                         fontWeight: FontWeight.w400,
@@ -145,8 +138,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.only(left: 40, right: 40),
                   child: Stack(
-                    clipBehavior:
-                        Clip.none, // Позволяет тексту выходить за границы Stack
+                    clipBehavior: Clip.none,
                     children: [
                       Container(
                         width: 400,
@@ -177,7 +169,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      //Текси над строкой
                       Positioned(
                         top: -28,
                         left: 1,
@@ -195,7 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                SizedBox(height: 30), // Отступ между полями
+                SizedBox(height: 30),
                 Padding(
                   padding: const EdgeInsets.only(left: 40, right: 40),
                   child: Stack(
@@ -250,12 +241,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 SizedBox(height: 22),
                 Align(
-                  alignment:
-                      Alignment.centerRight, // Выравнивание текста вправо
+                  alignment: Alignment.centerRight,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      right: 40,
-                    ), // Отступ от правого края
+                    padding: const EdgeInsets.only(right: 40),
                     child: InkWell(
                       onTap: () {
                         Navigator.push(
@@ -269,9 +257,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       child: Text(
                         'Сыр сөзду унуттуңузбу?',
-                        textAlign:
-                            TextAlign
-                                .right, // Дополнительно выравниваем текст внутри
+                        textAlign: TextAlign.right,
                         style: TextStyles.buttonTextStyle.copyWith(
                           color: Color(0xff01A560),
                           fontWeight: FontWeight.w400,
@@ -304,14 +290,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(width: 15),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return RegistScreen();
-                            },
-                          ),
-                        );
+                        context.go('/register');
                       },
                       child: Text(
                         'Ушул жерден катталыңыз',
@@ -354,10 +333,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 10),
                 ButtonSignInToGoogle(),
                 Padding(
-                  padding: const EdgeInsets.only(top: 150),
+                  padding: const EdgeInsets.only(top: 60),
                   child: Text(
                     '© МаралАкгул.Баардык укуктар корголгон',
                     style: TextStyles.buttonTextStyle.copyWith(
@@ -370,7 +349,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }

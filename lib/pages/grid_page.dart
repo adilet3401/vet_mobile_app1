@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vet_mobile_app/login_register_pages/account_page.dart';
+import 'package:go_router/go_router.dart';
+import 'package:vet_mobile_app/account_pages/account_page.dart';
 import 'package:vet_mobile_app/pages/biz_jonundo_page.dart';
 import 'package:vet_mobile_app/pages/bodo_mal_page.dart';
 import 'package:vet_mobile_app/pages/jylkylar_page.dart';

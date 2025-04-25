@@ -44,7 +44,6 @@ class _ProfileEditState extends State<ProfileEdit> {
         setState(() {
           userData = userDoc.data() as Map<String, dynamic>?;
           isLoading = false;
-
           // Устанавливаем начальные значения для контроллеров
           nameController.text = userData?['name'] ?? '';
           phoneController.text = userData?['phone']?.split('@')[0] ?? '';
