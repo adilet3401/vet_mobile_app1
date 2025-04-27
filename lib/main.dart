@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:vet_mobile_app/download_screen.dart';
 import 'package:vet_mobile_app/firebase_options.dart';
 import 'package:vet_mobile_app/go_auto_routes/go_router.dart';
 import 'package:vet_mobile_app/theme/theme_data.dart';
