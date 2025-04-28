@@ -8,6 +8,7 @@ ThemeData themeData() {
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.white,
       iconTheme: IconThemeData(color: Color(0xff01A560)),
+      elevation: 0,
     ),
     scaffoldBackgroundColor: Colors.white,
   );
