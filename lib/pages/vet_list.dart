@@ -59,7 +59,7 @@ class VetListPage extends StatelessWidget {
                         Text(
                           'Тажрыйба',
                           style: TextStyles.buttonTextStyle.copyWith(
-                            fontSize: 11,
+                            fontSize: 12,
                             color: Colors.black,
                           ),
                         ),
@@ -76,7 +76,7 @@ class VetListPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 9),
+              SizedBox(height: 8),
               Container(
                 width: 363,
                 height: 224,
@@ -124,7 +124,7 @@ class VetListPage extends StatelessWidget {
                 child: NavigateButton(
                   text: 'Билдирүү таштоо',
                   borderRadius: BorderRadius.circular(24),
-                  minimumSize: Size(307, 49),
+                  minimumSize: Size(307, 48),
                   onPressed: () {},
                 ),
               ),
