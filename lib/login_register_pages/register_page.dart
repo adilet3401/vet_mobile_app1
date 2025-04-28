@@ -1,13 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
-import 'package:vet_mobile_app/widgets/navigate_button.dart';
-import 'package:vet_mobile_app/widgets/sign_in_to_google.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:vet_mobile_app/widgets/user_email_password.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:go_router/go_router.dart';
+
+import '../theme/text_styles.dart';
+import '../widgets/navigate_button.dart';
+import '../widgets/sign_in_to_google.dart';
+import '../widgets/user_email_password.dart';
+
+//crt option O
+//command .
 class RegistScreen extends StatefulWidget {
   const RegistScreen({super.key});
 

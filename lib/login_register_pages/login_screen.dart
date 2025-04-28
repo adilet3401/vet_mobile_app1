@@ -1,12 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vet_mobile_app/login_register_pages/forgot_password_screen.dart';
+
 import 'package:vet_mobile_app/theme/text_styles.dart';
-import 'package:vet_mobile_app/widgets/navigate_button.dart';
-import 'package:vet_mobile_app/widgets/sign_in_to_google.dart';
-import 'package:vet_mobile_app/widgets/user_email_password.dart';
+
+import '../widgets/navigate_button.dart';
+import '../widgets/sign_in_to_google.dart';
+import '../widgets/user_email_password.dart';
+
+import 'forgot_password_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
