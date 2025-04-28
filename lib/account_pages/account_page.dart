@@ -162,7 +162,7 @@ class _AccountPageState extends State<AccountPage> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
-                height: 240, // Высота формы
+                height: 170, // Высота формы
                 decoration: BoxDecoration(
                   color: Color(0xffe8f6f1),
                   borderRadius: BorderRadius.only(

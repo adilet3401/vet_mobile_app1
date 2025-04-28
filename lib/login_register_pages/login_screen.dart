@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vet_mobile_app/login_register_pages/forgot_password_screen.dart';
-import 'package:vet_mobile_app/login_register_pages/register_page.dart';
-import 'package:vet_mobile_app/pages/menu_page.dart';
 import 'package:vet_mobile_app/theme/text_styles.dart';
 import 'package:vet_mobile_app/widgets/navigate_button.dart';
 import 'package:vet_mobile_app/widgets/sign_in_to_google.dart';
