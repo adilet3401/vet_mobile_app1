@@ -32,4 +32,9 @@ class TextStyles {
     fontWeight: FontWeight.w600,
     fontSize: 16,
   );
+  static final TextStyle bTashtoo = GoogleFonts.nunito(
+    color: Colors.black,
+    fontWeight: FontWeight.w500,
+    fontSize: 19,
+  );
 }

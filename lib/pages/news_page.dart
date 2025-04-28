@@ -177,7 +177,7 @@ class NewsPage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: Text(title, style: TextStyles.appBarTitle)),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(

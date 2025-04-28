@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:vet_mobile_app/pages/news_menu.dart';
+import 'package:vet_mobile_app/pages/news_page.dart';
 import 'package:vet_mobile_app/pages/vet_list.dart';
 import 'package:vet_mobile_app/pages/grid_page.dart';
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vet_mobile_app/theme/text_styles.dart';
 import 'package:vet_mobile_app/widgets/my_appbar.dart';
 import 'package:vet_mobile_app/widgets/navigate_button.dart';
@@ -125,7 +126,9 @@ class VetListPage extends StatelessWidget {
                   text: 'Билдирүү таштоо',
                   borderRadius: BorderRadius.circular(24),
                   minimumSize: Size(307, 48),
-                  onPressed: () {},
+                  onPressed: () {
+                    context.push('/b_t');
+                  },
                 ),
               ),
             ],

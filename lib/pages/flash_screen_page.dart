@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vet_mobile_app/login_register_pages/login_screen.dart';
 import 'package:vet_mobile_app/theme/text_styles.dart';
 import 'package:vet_mobile_app/widgets/navigate_button.dart';
 

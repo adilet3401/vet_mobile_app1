@@ -8,6 +8,7 @@ class AppBarUtils {
     VoidCallback? onProfileTap, // Действие при нажатии на иконку
   }) {
     return AppBar(
+      elevation: 0,
       actions:
           showProfileIcon
               ? [
