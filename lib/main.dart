@@ -24,3 +24,4 @@ class MyApp extends StatelessWidget {
   }
 }
 //google sign in к симулятору айфон
+//flutter projects
