@@ -65,7 +65,7 @@ class FlashScreen extends StatelessWidget {
                     onPressed: () {
                       context.go('/login');
                     },
-                    minimumSize: Size(308, 55),
+                    minimumSize: Size(308, 50),
                   ),
                 ],
               ),
