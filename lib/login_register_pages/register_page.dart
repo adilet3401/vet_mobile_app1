@@ -133,7 +133,7 @@ class _RegistScreenState extends State<RegistScreen> {
         ),
       );
 
-      Navigator.pop(context);
+      context.go('/login');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         ScaffoldMessenger.of(context).showSnackBar(

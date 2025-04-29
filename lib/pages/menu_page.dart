@@ -66,6 +66,8 @@ class _MenuPageState extends State<MenuPage> {
       ),
       body: PageView(
         controller: _pageController,
+        physics:
+            NeverScrollableScrollPhysics(), //отключает переход свайпом по экрану
         onPageChanged: (index) {
           myCurrentIndex = index;
         },
