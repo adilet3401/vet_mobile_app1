@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../theme/text_styles.dart';
 import '../widgets/my_appbar.dart';
@@ -30,7 +31,12 @@ class NewsPage extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBarUtils.customAppBar(title: 'Жанылыктар'),
+      appBar: AppBarUtils.customAppBar(
+        title: 'Жанылыктар',
+        onProfileTap: () {
+          context.push('/accountPage');
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
-import 'package:vet_mobile_app/widgets/my_appbar.dart';
-import 'package:vet_mobile_app/widgets/navigate_button.dart';
+
+import '../theme/text_styles.dart';
+import '../widgets/my_appbar.dart';
+import '../widgets/navigate_button.dart';
 
 class VetListPage extends StatelessWidget {
   const VetListPage({super.key});
@@ -10,7 +12,12 @@ class VetListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarUtils.customAppBar(title: 'Ветеринар'),
+      appBar: AppBarUtils.customAppBar(
+        title: 'Ветеринар',
+        onProfileTap: () {
+          context.push('/accountPage');
+        },
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 22, right: 22, top: 20),

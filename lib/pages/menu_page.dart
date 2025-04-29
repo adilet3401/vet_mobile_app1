@@ -54,7 +54,7 @@ class _MenuPageState extends State<MenuPage> {
               });
               _pageController.animateToPage(
                 index,
-                duration: Duration(milliseconds: 230),
+                duration: Duration(milliseconds: 180),
                 curve: Curves.easeInOut,
               );
             },

@@ -21,10 +21,7 @@ class MenuGrid extends StatelessWidget {
       appBar: AppBarUtils.customAppBar(
         title: 'Меню',
         onProfileTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AccountPage()),
-          );
+          context.push('/accountPage');
         },
       ),
       body: Padding(
