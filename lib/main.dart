@@ -1,8 +1,10 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:vet_mobile_app/firebase_options.dart';
-import 'package:vet_mobile_app/go_auto_routes/go_router.dart';
-import 'package:vet_mobile_app/theme/theme_data.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
+import 'go_auto_routes/go_router.dart';
+import 'theme/theme_data.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

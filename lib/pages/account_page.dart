@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/svg.dart';
-import 'package:vet_mobile_app/widgets/my_appbar.dart';
+
+import '../widgets/my_appbar.dart';
 
 class AccountPage extends StatelessWidget {
   final String name;

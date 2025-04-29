@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
-import 'package:vet_mobile_app/widgets/my_appbar.dart';
+
+import '../theme/text_styles.dart';
+import '../widgets/my_appbar.dart';
 
 class BizJonundoPage extends StatelessWidget {
   const BizJonundoPage({super.key});

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vet_mobile_app/widgets/my_appbar.dart';
+
+import '../widgets/my_appbar.dart';
 
 class BodoMalPage extends StatelessWidget {
   const BodoMalPage({super.key});

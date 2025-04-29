@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
+
+import '../theme/text_styles.dart';
 
 class AppBarUtils {
   static PreferredSizeWidget customAppBar({

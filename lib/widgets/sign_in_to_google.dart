@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/svg.dart';
-import 'package:vet_mobile_app/pages/menu_page.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../pages/menu_page.dart';
+import '../theme/text_styles.dart';
 
 class ButtonSignInToGoogle extends StatefulWidget {
   const ButtonSignInToGoogle({super.key});

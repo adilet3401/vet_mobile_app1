@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
+
+import '../theme/text_styles.dart';
 
 class NavigationContainer extends StatelessWidget {
   const NavigationContainer({

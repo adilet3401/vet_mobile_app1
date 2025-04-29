@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:vet_mobile_app/login_register_pages/change_password_screen.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
-import 'package:vet_mobile_app/widgets/my_appbar.dart';
-// import 'package:vet_mobile_app/widgets/navigate_button.dart';
+
+import '../theme/text_styles.dart';
+import '../widgets/my_appbar.dart';
+
+import 'change_password_screen.dart';
 
 class ForgotPasswordScreen2 extends StatefulWidget {
   const ForgotPasswordScreen2({super.key});

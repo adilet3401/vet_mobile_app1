@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-// import 'package:vet_mobile_app/login_register_pages/forgot_password_screen2.dart';
-import 'package:vet_mobile_app/pages/menu_page.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
-import 'package:vet_mobile_app/widgets/my_appbar.dart';
-import 'package:vet_mobile_app/widgets/navigate_button.dart';
-import 'package:vet_mobile_app/widgets/user_email_password.dart';
+
+import '../pages/menu_page.dart';
+import '../theme/text_styles.dart';
+import '../widgets/my_appbar.dart';
+import '../widgets/navigate_button.dart';
+import '../widgets/user_email_password.dart';
 
 class ChagePasswordScreen extends StatefulWidget {
   const ChagePasswordScreen({super.key});

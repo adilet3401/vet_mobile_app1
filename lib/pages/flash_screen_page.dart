@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:go_router/go_router.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
-import 'package:vet_mobile_app/widgets/navigate_button.dart';
+
+import '../theme/text_styles.dart';
+import '../widgets/navigate_button.dart';
 
 class FlashScreen extends StatelessWidget {
   const FlashScreen({super.key});

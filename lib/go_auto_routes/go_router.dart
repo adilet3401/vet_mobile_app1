@@ -1,10 +1,11 @@
 import 'package:go_router/go_router.dart';
-import 'package:vet_mobile_app/download_screen.dart';
-import 'package:vet_mobile_app/login_register_pages/login_screen.dart';
-import 'package:vet_mobile_app/login_register_pages/register_page.dart';
-import 'package:vet_mobile_app/pages/bildiruu_tashtoo_page.dart';
-import 'package:vet_mobile_app/pages/flash_screen_page.dart';
-import 'package:vet_mobile_app/pages/menu_page.dart';
+
+import '../download_screen.dart';
+import '../login_register_pages/login_screen.dart';
+import '../login_register_pages/register_page.dart';
+import '../pages/bildiruu_tashtoo_page.dart';
+import '../pages/flash_screen_page.dart';
+import '../pages/menu_page.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
