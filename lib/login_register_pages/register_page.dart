@@ -189,7 +189,25 @@ class _RegistScreenState extends State<RegistScreen> {
                     top: 20,
                   ),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () async {
+                      try {
+                        await FirebaseAuth.instance
+                            .signInAnonymously(); //ВХОД КАК ГОСТЬ
+                        context.go('/menu');
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Кирүүдө ката кетти',
+                              style: TextStyles.forgotPasswordScreenTextStyle
+                                  .copyWith(color: Colors.white),
+                            ),
+                            duration: Duration(seconds: 2),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
+                    },
                     child: Text(
                       'Өткөрүп жиберүү',
                       textAlign: TextAlign.right,

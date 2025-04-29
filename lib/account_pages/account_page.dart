@@ -30,16 +30,29 @@ class _AccountPageState extends State<AccountPage> {
     try {
       User? currentUser = _auth.currentUser; // Получаем текущего пользователя
       if (currentUser != null) {
-        DocumentSnapshot userDoc =
-            await _firestore
-                .collection('users') // Коллекция "users"
-                .doc(currentUser.uid) // Документ по UID пользователя
-                .get();
+        if (currentUser.isAnonymous) {
+          // Если пользователь гость
+          setState(() {
+            userData = {
+              'name': 'Гостевой пользователь',
+              'email': 'Ошибка',
+              'phone': 'Ошибка',
+            };
+            isLoading = false;
+          });
+        } else {
+          // Если пользователь зарегистрирован
+          DocumentSnapshot userDoc =
+              await _firestore
+                  .collection('users') // Коллекция "users"
+                  .doc(currentUser.uid) // Документ по UID пользователя
+                  .get();
 
-        setState(() {
-          userData = userDoc.data() as Map<String, dynamic>?;
-          isLoading = false;
-        });
+          setState(() {
+            userData = userDoc.data() as Map<String, dynamic>?;
+            isLoading = false;
+          });
+        }
       }
     } catch (e) {
       print('Ошибка при загрузке данных пользователя: $e');
@@ -76,7 +89,7 @@ class _AccountPageState extends State<AccountPage> {
                     ),
                     SizedBox(height: 15),
                     Text(
-                      userData!['name'] ?? 'Имя не указано',
+                      userData!['name'] ?? 'Ошибка',
                       style: GoogleFonts.nunito(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -93,14 +106,7 @@ class _AccountPageState extends State<AccountPage> {
                         height: 50,
                       ),
                       title: Text(
-                        userData!['email'] != null &&
-                                userData!['email']!.contains('@example.com') &&
-                                RegExp(
-                                  r'^\d+$',
-                                ).hasMatch(userData!['email']!.split('@')[0])
-                            ? 'Email не указан' // Если email — это номер телефона с доменной частью, не показываем его
-                            : userData!['email'] ??
-                                'Email не указан', // Показываем email полностью
+                        userData!['email'] ?? 'Ошибка',
                         style: GoogleFonts.nunito(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
@@ -116,8 +122,7 @@ class _AccountPageState extends State<AccountPage> {
                         height: 50,
                       ),
                       title: Text(
-                        userData!['phone']?.split('@')[0] ??
-                            'Телефон не указан', // Убираем доменную часть
+                        userData!['phone'] ?? 'Ошибка',
                         style: GoogleFonts.nunito(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
