@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vet_mobile_app/theme/text_styles.dart';
+import 'package:vet_mobile_app/widgets/my_appbar.dart';
+import 'package:vet_mobile_app/widgets/navigate_button.dart';
 
 class BildiruuTashtooPage extends StatelessWidget {
   const BildiruuTashtooPage({super.key});
@@ -7,17 +10,9 @@ class BildiruuTashtooPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Ветеринар', style: TextStyles.appBarTitle),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.green),
-          onPressed: () => Navigator.pop(context),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+      appBar: AppBarUtils.customAppBar(title: 'Ветеринар'),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        padding: const EdgeInsets.only(right: 30, left: 30, top: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -73,32 +68,17 @@ class BildiruuTashtooPage extends StatelessWidget {
                 ),
               ],
             ),
-            const Spacer(),
+            SizedBox(height: 30),
 
             // Кнопка "Жиберүү"
             Center(
-              child: ElevatedButton(
+              child: NavigateButton(
+                text: 'Жиберүү',
+                borderRadius: BorderRadius.circular(24),
+                minimumSize: Size(307, 48),
                 onPressed: () {
-                  // Логика отправки
+                  context.push('/b_t');
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 100,
-                    vertical: 15,
-                  ),
-                ),
-                child: const Text(
-                  'Жиберүү',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
               ),
             ),
           ],
@@ -159,15 +139,15 @@ class BildiruuTashtooPage extends StatelessWidget {
         fillColor: Colors.white,
         contentPadding: const EdgeInsets.all(60),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(24),
           borderSide: BorderSide(color: Colors.green.withOpacity(0.5)),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(24),
           borderSide: BorderSide(color: Colors.green.withOpacity(0.5)),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(24),
           borderSide: const BorderSide(color: Colors.green),
         ),
       ),
@@ -185,7 +165,7 @@ class BildiruuTashtooPage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 15),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(24),
         border: Border.all(color: Colors.green.withOpacity(0.5)),
       ),
       child: Row(

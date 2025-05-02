@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'grid_page.dart';
 import 'news_page.dart';
-import 'vet_list.dart';
+import 'vet_list_page.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({super.key});
