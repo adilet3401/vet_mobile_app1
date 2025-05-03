@@ -26,8 +26,7 @@ class BildiruuTashtooPage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-
+            const SizedBox(height: 19),
             // Поле ввода имени
             _buildInputField(
               context,
@@ -37,7 +36,6 @@ class BildiruuTashtooPage extends StatelessWidget {
               suffixIconColor: Colors.green,
             ),
             const SizedBox(height: 15),
-
             // Поле ввода телефона
             _buildInputField(
               context,
@@ -47,11 +45,9 @@ class BildiruuTashtooPage extends StatelessWidget {
               suffixIconColor: Colors.red,
             ),
             const SizedBox(height: 15),
-
             // Поле ввода текста
             _buildTextArea(context, icon: Icons.edit, hintText: 'Текст'),
             const SizedBox(height: 15),
-
             // Кнопки "Сүрөт жүктөө" и "Баасы"
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -69,7 +65,6 @@ class BildiruuTashtooPage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 30),
-
             // Кнопка "Жиберүү"
             Center(
               child: NavigateButton(
