@@ -35,7 +35,7 @@ class BildiruuTashtooPage extends StatelessWidget {
               suffixIcon: Icons.check_circle,
               suffixIconColor: Colors.green,
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 14),
             // Поле ввода телефона
             _buildInputField(
               context,
@@ -44,7 +44,7 @@ class BildiruuTashtooPage extends StatelessWidget {
               suffixIcon: Icons.cancel,
               suffixIconColor: Colors.red,
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 14),
             // Поле ввода текста
             _buildTextArea(context, icon: Icons.edit, hintText: 'Текст'),
             const SizedBox(height: 15),
