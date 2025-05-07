@@ -43,7 +43,7 @@ class BildiruuTashtooPage extends StatelessWidget {
               icon: Icons.phone,
               hintText: 'Телефон номуруңуз',
               suffixIcon: Icons.cancel,
-              suffixIconColor: Colors.blue,
+              suffixIconColor: Colors.red,
             ),
             const SizedBox(height: 14),
             // Поле ввода текста
