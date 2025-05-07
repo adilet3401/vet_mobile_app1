@@ -37,12 +37,13 @@ class BildiruuTashtooPage extends StatelessWidget {
             ),
             const SizedBox(height: 14),
             // Поле ввода телефона
+            //new commit the test
             _buildInputField(
               context,
               icon: Icons.phone,
               hintText: 'Телефон номуруңуз',
               suffixIcon: Icons.cancel,
-              suffixIconColor: Colors.red,
+              suffixIconColor: Colors.blue,
             ),
             const SizedBox(height: 14),
             // Поле ввода текста
