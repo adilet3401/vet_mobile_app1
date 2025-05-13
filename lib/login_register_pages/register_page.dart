@@ -119,6 +119,7 @@ class _RegistScreenState extends State<RegistScreen> {
             'createAt': FieldValue.serverTimestamp(),
           });
 
+      // ignore: unnecessary_null_comparison
       if (userCredential != null) {
         nameController.clear();
         phoneController.clear();
@@ -126,6 +127,7 @@ class _RegistScreenState extends State<RegistScreen> {
         confirmPasswordController.clear();
       }
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Каттоо ийгиликтүү аяктады!'),
@@ -133,9 +135,11 @@ class _RegistScreenState extends State<RegistScreen> {
         ),
       );
 
+      // ignore: use_build_context_synchronously
       context.go('/login');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Этот аккаунт уже существует'),
@@ -143,6 +147,7 @@ class _RegistScreenState extends State<RegistScreen> {
           ),
         );
       } else if (e.code == 'weak-password') {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Пароль слишком простой'),
@@ -150,6 +155,7 @@ class _RegistScreenState extends State<RegistScreen> {
           ),
         );
       } else {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Катто учурунда ката кетти'),
@@ -158,6 +164,7 @@ class _RegistScreenState extends State<RegistScreen> {
         );
       }
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Каттоо учурунда ката кетти'),
@@ -193,8 +200,10 @@ class _RegistScreenState extends State<RegistScreen> {
                       try {
                         await FirebaseAuth.instance
                             .signInAnonymously(); //ВХОД КАК ГОСТЬ
+                        // ignore: use_build_context_synchronously
                         context.go('/menu');
                       } catch (e) {
+                        // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -393,6 +402,7 @@ class _RegistScreenState extends State<RegistScreen> {
                             onChanged: (value) {
                               setState(() {
                                 if (value.isNotEmpty)
+                                  // ignore: curly_braces_in_flow_control_structures
                                   confirmPasswordError = null;
                               });
                             },

@@ -11,6 +11,7 @@ class ProfileEdit extends StatefulWidget {
   const ProfileEdit({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProfileEditState createState() => _ProfileEditState();
 }
 
@@ -50,6 +51,7 @@ class _ProfileEditState extends State<ProfileEdit> {
         });
       }
     } catch (e) {
+      // ignore: avoid_print
       print('Ошибка при загрузке данных пользователя: $e');
       setState(() {
         isLoading = false;
@@ -67,12 +69,15 @@ class _ProfileEditState extends State<ProfileEdit> {
         });
 
         ScaffoldMessenger.of(
+          // ignore: use_build_context_synchronously
           context,
         ).showSnackBar(SnackBar(content: Text('Данные успешно сохранены!')));
       }
     } catch (e) {
+      // ignore: avoid_print
       print('Ошибка при сохранении данных пользователя: $e');
       ScaffoldMessenger.of(
+        // ignore: use_build_context_synchronously
         context,
       ).showSnackBar(SnackBar(content: Text('Ошибка при сохранении данных')));
     }

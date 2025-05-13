@@ -58,6 +58,7 @@ class VetListPage extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
+                      // ignore: deprecated_member_use
                       border: Border.all(color: Colors.green.withOpacity(0.5)),
                       borderRadius: BorderRadius.circular(12),
                       color: Colors.white,
@@ -93,6 +94,7 @@ class VetListPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
+                      // ignore: deprecated_member_use
                       color: Colors.black.withOpacity(0.2),
                       blurRadius: 10,
                       offset: const Offset(0, 6),

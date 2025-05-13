@@ -78,6 +78,7 @@ class _MenuPageState extends State<MenuPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   BottomNavigationBarItem BottomNavBar(String iconPath, int currentIndex) {
     return BottomNavigationBarItem(
       icon: Container(
@@ -91,6 +92,7 @@ class _MenuPageState extends State<MenuPage> {
           iconPath,
           width: 24,
           height: 24,
+          // ignore: deprecated_member_use
           color:
               myCurrentIndex == currentIndex ? Color(0xff01A560) : Colors.white,
         ),

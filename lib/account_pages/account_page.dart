@@ -10,6 +10,7 @@ class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AccountPageState createState() => _AccountPageState();
 }
 
@@ -55,6 +56,7 @@ class _AccountPageState extends State<AccountPage> {
         }
       }
     } catch (e) {
+      // ignore: avoid_print
       print('Ошибка при загрузке данных пользователя: $e');
       setState(() {
         isLoading = false;

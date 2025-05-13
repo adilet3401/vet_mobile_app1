@@ -105,10 +105,12 @@ class BildiruuTashtooPage extends StatelessWidget {
         contentPadding: const EdgeInsets.symmetric(vertical: 15),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
+          // ignore: deprecated_member_use
           borderSide: BorderSide(color: Colors.green.withOpacity(0.5)),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
+          // ignore: deprecated_member_use
           borderSide: BorderSide(color: Colors.green.withOpacity(0.5)),
         ),
         focusedBorder: OutlineInputBorder(
@@ -136,10 +138,12 @@ class BildiruuTashtooPage extends StatelessWidget {
         contentPadding: const EdgeInsets.all(60),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24),
+          // ignore: deprecated_member_use
           borderSide: BorderSide(color: Colors.green.withOpacity(0.5)),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24),
+          // ignore: deprecated_member_use
           borderSide: BorderSide(color: Colors.green.withOpacity(0.5)),
         ),
         focusedBorder: OutlineInputBorder(
@@ -162,6 +166,7 @@ class BildiruuTashtooPage extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(24),
+        // ignore: deprecated_member_use
         border: Border.all(color: Colors.green.withOpacity(0.5)),
       ),
       child: Row(

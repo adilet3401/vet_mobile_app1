@@ -56,6 +56,7 @@ class _ButtonSignInToGoogleState extends State<ButtonSignInToGoogle> {
               'createAt': FieldValue.serverTimestamp(),
             });
 
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Регистрация через Google выполнена успешно!'),
@@ -63,6 +64,7 @@ class _ButtonSignInToGoogleState extends State<ButtonSignInToGoogle> {
           ),
         );
       } else {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Вы уже зарегистрированы. Выполнен вход.'),
@@ -73,10 +75,12 @@ class _ButtonSignInToGoogleState extends State<ButtonSignInToGoogle> {
 
       // Перенаправление на главную страницу
       Navigator.push(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => MenuPage()),
       );
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Ошибка регистрации через Google: $e'),

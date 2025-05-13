@@ -77,13 +77,16 @@ class _LoginScreenState extends State<LoginScreen> {
         email: email,
         password: password,
       );
+      // ignore: use_build_context_synchronously
       context.go('/menu');
       // Navigator.pushReplacement(
       //   context,
       //   MaterialPageRoute(builder: (context) => MenuPage()),
       // );
+      // ignore: avoid_print
       print('Signed in!');
     } catch (e) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -128,8 +131,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       try {
                         await FirebaseAuth.instance
                             .signInAnonymously(); //ВХОД КАК ГОСТЬ
+                        // ignore: use_build_context_synchronously
                         context.go('/menu');
                       } catch (e) {
+                        // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(

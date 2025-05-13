@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vet_mobile_app/account_pages/account_page.dart';
-import 'package:vet_mobile_app/pages/biz_jonundo_page.dart';
-import 'package:vet_mobile_app/pages/bodo_mal_page.dart';
-import 'package:vet_mobile_app/pages/jylkylar_page.dart';
-import 'package:vet_mobile_app/pages/koi_echkiler_page.dart';
-import 'package:vet_mobile_app/pages/ooruu_page.dart';
-import 'package:vet_mobile_app/pages/took_page.dart';
-import 'package:vet_mobile_app/pages/toyut_page.dart';
-import 'package:vet_mobile_app/pages/uruktandyruu_page.dart';
-import 'package:vet_mobile_app/widgets/my_appbar.dart';
-import 'package:vet_mobile_app/widgets/navigation_container.dart';
+import 'biz_jonundo_page.dart';
+import 'bodo_mal_page.dart';
+import 'jylkylar_page.dart';
+import 'koi_echkiler_page.dart';
+import 'ooruu_page.dart';
+import 'took_page.dart';
+import 'toyut_page.dart';
+import 'uruktandyruu_page.dart';
+import '../widgets/my_appbar.dart';
+import '../widgets/navigation_container.dart';
 
 class MenuGrid extends StatelessWidget {
   const MenuGrid({super.key});
