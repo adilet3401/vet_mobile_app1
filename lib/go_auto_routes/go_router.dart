@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:vet_mobile_app/vet_list_screens/feedback_succes.page.dart';
 
 import '../account_pages/account_page.dart';
 import '../download_screen.dart';
@@ -18,5 +19,9 @@ final GoRouter router = GoRouter(
     GoRoute(path: '/menu', builder: (context, state) => MenuPage()),
     GoRoute(path: '/b_t', builder: (context, state) => BildiruuTashtooPage()),
     GoRoute(path: '/accountPage', builder: (context, state) => AccountPage()),
+    GoRoute(
+      path: '/feedback-success',
+      builder: (context, state) => FeedbackSuccessPage(),
+    ),
   ],
 );

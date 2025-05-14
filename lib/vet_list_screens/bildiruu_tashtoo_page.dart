@@ -60,31 +60,24 @@ class _BildiruuTashtooPageState extends State<BildiruuTashtooPage> {
     }
 
     try {
-      // Отправка данных в Firestore
+      print('Попытка записи в Firestore...');
       await FirebaseFirestore.instance.collection('feedbacks').add({
         'name': nameController.text.trim(),
         'phone': phoneController.text.trim(),
         'feedback': feedbackController.text.trim(),
         'createdAt': FieldValue.serverTimestamp(),
       });
+      print('Данные успешно записаны в Firestore!');
 
-      // Очистка полей после успешной отправки
+      // Очистка полей
       nameController.clear();
       phoneController.clear();
       feedbackController.clear();
 
-      // Показываем сообщение об успехе
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Билдирүү ийгиликтүү жиберилди!'),
-          backgroundColor: Colors.green,
-        ),
-      );
-
-      // Переход на другую страницу (если нужно)
-      context.push('/b_t');
+      // Переход на страницу успеха
+      context.push('/feedback-success');
     } catch (e) {
-      // Обработка ошибок
+      print('Ошибка при записи в Firestore: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Ката кетти: $e'), backgroundColor: Colors.red),
       );
