@@ -1,30 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:vet_mobile_app/theme/text_styles.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LineTheBilTash extends StatelessWidget {
-  final String hintext, icon;
+  final TextEditingController? controller;
+  final String hintext;
+  final String icon;
+  final String? errorText;
+  final void Function(String)? onChanged;
 
-  const LineTheBilTash({super.key, required this.hintext, required this.icon});
+  const LineTheBilTash({
+    super.key,
+    this.controller,
+    required this.hintext,
+    required this.icon,
+    this.errorText,
+    this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      // controller: controller, //controller
-      // keyboardType: TextInputType.number,asasa
-      // inputFormatters: inputFormatters, // это для ограничения ввода текста
-      // onChanged: onChanged, // это для изменения поля ввода после ввода текста
-      // obscureText: obsureText, // это для скрытия текста в поле ввода
+      controller: controller,
+      onChanged: onChanged,
       decoration: InputDecoration(
         prefixIcon: Padding(
-          padding: EdgeInsets.all(15),
-          child: Image.asset(icon, scale: 25),
+          padding: const EdgeInsets.all(15),
+          child: Image.asset(icon, scale: 30),
         ),
-        // labelText: labelText,
-        labelStyle: TextStyle(color: Colors.grey),
-        prefixIconColor: Colors.grey,
-        prefixIconConstraints: BoxConstraints(minWidth: 25, minHeight: 25),
         hintText: hintext,
-        hintStyle: TextStyles.buttonTextStyle.copyWith(color: Colors.grey),
+        hintStyle: TextStyle(color: Colors.grey),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Color(0xff99dbbf), width: 1),
           borderRadius: BorderRadius.circular(24),
@@ -41,7 +45,7 @@ class LineTheBilTash extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
           borderSide: BorderSide(color: Colors.red, width: 2),
         ),
-        // errorText: errorText,
+        errorText: errorText,
       ),
     );
   }

@@ -1,12 +1,99 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vet_mobile_app/theme/text_styles.dart';
 import 'package:vet_mobile_app/vet_list_screens/line_the_bildiruu_tashtoo.dart';
 import 'package:vet_mobile_app/widgets/my_appbar.dart';
 import 'package:vet_mobile_app/widgets/navigate_button.dart';
 
-class BildiruuTashtooPage extends StatelessWidget {
+class BildiruuTashtooPage extends StatefulWidget {
   const BildiruuTashtooPage({super.key});
+
+  @override
+  State<BildiruuTashtooPage> createState() => _BildiruuTashtooPageState();
+}
+
+class _BildiruuTashtooPageState extends State<BildiruuTashtooPage> {
+  // Контроллеры для полей ввода
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController feedbackController = TextEditingController();
+
+  // Переменные для ошибок
+  String? nameError;
+  String? phoneError;
+  String? feedbackError;
+  bool isLoading = false;
+
+  // Функция для отправки данных в Firestore
+  Future<void> submitFeedback() async {
+    setState(() {
+      nameError = null;
+      phoneError = null;
+      feedbackError = null;
+      isLoading = true;
+    });
+
+    // Валидация полей
+    if (nameController.text.isEmpty) {
+      setState(() {
+        nameError = 'Аты жөнүңүздү жазыңыз';
+        isLoading = false;
+      });
+      return;
+    }
+
+    if (phoneController.text.isEmpty) {
+      setState(() {
+        phoneError = 'Телефон номуруңузду жазыңыз';
+        isLoading = false;
+      });
+      return;
+    }
+
+    if (feedbackController.text.isEmpty) {
+      setState(() {
+        feedbackError = 'Текст жазыңыз';
+        isLoading = false;
+      });
+      return;
+    }
+
+    try {
+      // Отправка данных в Firestore
+      await FirebaseFirestore.instance.collection('feedbacks').add({
+        'name': nameController.text.trim(),
+        'phone': phoneController.text.trim(),
+        'feedback': feedbackController.text.trim(),
+        'createdAt': FieldValue.serverTimestamp(),
+      });
+
+      // Очистка полей после успешной отправки
+      nameController.clear();
+      phoneController.clear();
+      feedbackController.clear();
+
+      // Показываем сообщение об успехе
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Билдирүү ийгиликтүү жиберилди!'),
+          backgroundColor: Colors.green,
+        ),
+      );
+
+      // Переход на другую страницу (если нужно)
+      context.push('/b_t');
+    } catch (e) {
+      // Обработка ошибок
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Ката кетти: $e'), backgroundColor: Colors.red),
+      );
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,26 +120,39 @@ class BildiruuTashtooPage extends StatelessWidget {
               child: Column(
                 children: [
                   LineTheBilTash(
+                    controller: nameController,
                     hintext: 'Аты жөнү',
                     icon: 'assets/Vector.png',
+                    errorText: nameError,
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.isNotEmpty) nameError = null;
+                      });
+                    },
                   ),
                   SizedBox(height: 20),
                   LineTheBilTash(
+                    controller: phoneController,
                     hintext: 'Телефон номуруңуз',
                     icon: 'assets/Vector-2.png',
+                    errorText: phoneError,
+                    onChanged: (value) {
+                      setState(() {
+                        if (value.isNotEmpty) phoneError = null;
+                      });
+                    },
                   ),
                 ],
               ),
             ),
-
             const SizedBox(height: 21),
             Stack(
               children: [
                 TextFormField(
+                  controller: feedbackController,
                   maxLines: 9,
                   decoration: InputDecoration(
                     prefixIcon: Padding(padding: EdgeInsets.all(15)),
-                    // labelText: labelText,
                     labelStyle: TextStyle(color: Colors.grey),
                     prefixIconColor: Colors.grey,
                     prefixIconConstraints: BoxConstraints(
@@ -85,29 +185,30 @@ class BildiruuTashtooPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(24),
                       borderSide: BorderSide(color: Colors.red, width: 2),
                     ),
+                    errorText: feedbackError,
                   ),
+                  onChanged: (value) {
+                    setState(() {
+                      if (value.isNotEmpty) feedbackError = null;
+                    });
+                  },
                 ),
                 Positioned(
-                  top: 16, // Расположение иконки сверху
-                  left: 9, // Расположение иконки слева
+                  top: 16,
+                  left: 9,
                   child: Icon(Icons.mode_edit_outlined, color: Colors.black54),
                 ),
               ],
             ),
             const SizedBox(height: 15),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //   children: [],
-            // ),
             SizedBox(height: 30),
             Center(
               child: NavigateButton(
                 text: 'Жиберүү',
                 borderRadius: BorderRadius.circular(24),
                 minimumSize: Size(307, 48),
-                onPressed: () {
-                  context.push('/b_t');
-                },
+                onPressed: isLoading ? null : submitFeedback,
+                isLoading: isLoading,
               ),
             ),
           ],
@@ -116,73 +217,11 @@ class BildiruuTashtooPage extends StatelessWidget {
     );
   }
 
-  // Поле ввода
-  // Widget _buildInputField(
-  //   BuildContext context, {
-  //   required IconData icon,
-  //   required String hintText,
-  //   IconData? suffixIcon,
-  //   Color? suffixIconColor,
-  // }) {
-  //   return TextField(
-  //     decoration: InputDecoration(
-  //       prefixIcon: Icon(icon, color: Colors.green),
-  //       suffixIcon:
-  //           suffixIcon != null
-  //               ? Icon(suffixIcon, color: suffixIconColor)
-  //               : null,
-  //       hintText: hintText,
-  //       hintStyle: const TextStyle(color: Colors.grey),
-  //       filled: true,
-  //       fillColor: Colors.white,
-  //       contentPadding: const EdgeInsets.symmetric(vertical: 15),
-  //       border: OutlineInputBorder(
-  //         borderRadius: BorderRadius.circular(12),
-  //         // ignore: deprecated_member_use
-  //         borderSide: BorderSide(color: Colors.green.withOpacity(0.5)),
-  //       ),
-  //       enabledBorder: OutlineInputBorder(
-  //         borderRadius: BorderRadius.circular(12),
-  //         // ignore: deprecated_member_use
-  //         borderSide: BorderSide(color: Colors.green.withOpacity(0.5)),
-  //       ),
-  //       focusedBorder: OutlineInputBorder(
-  //         borderRadius: BorderRadius.circular(12),
-  //         borderSide: const BorderSide(color: Colors.green),
-  //       ),
-  //     ),
-  //   );
-  // }
-
-  // Поле для текста
-
-  // Кнопка действия
-  //   Widget _buildActionButton(
-  //     BuildContext context, {
-  //     required IconData icon,
-  //     required String label,
-  //   }) {
-  //     return Container(
-  //       width: MediaQuery.of(context).size.width * 0.4,
-  //       padding: const EdgeInsets.symmetric(vertical: 15),
-  //       decoration: BoxDecoration(
-  //         color: Colors.white,
-  //         borderRadius: BorderRadius.circular(24),
-  //         // ignore: deprecated_member_use
-  //         border: Border.all(color: Colors.green.withOpacity(0.5)),
-  //       ),
-  //       child: Row(
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: [
-  //           Icon(icon, color: Colors.green),
-  //           const SizedBox(width: 8),
-  //           Text(
-  //             label,
-  //             style: const TextStyle(color: Colors.black, fontSize: 14),
-  //           ),
-  //         ],
-  //       ),
-  //     );
-  //   }
-  // }
+  @override
+  void dispose() {
+    nameController.dispose();
+    phoneController.dispose();
+    feedbackController.dispose();
+    super.dispose();
+  }
 }
