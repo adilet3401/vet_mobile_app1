@@ -4,7 +4,7 @@ import '../account_pages/account_page.dart';
 import '../download_screen.dart';
 import '../login_register_pages/login_screen.dart';
 import '../login_register_pages/register_page.dart';
-import '../pages/bildiruu_tashtoo_page.dart';
+import '../vet_list_screens/bildiruu_tashtoo_page.dart';
 import '../pages/flash_screen_page.dart';
 import '../pages/menu_page.dart';
 
