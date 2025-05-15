@@ -46,9 +46,11 @@ class FeedbackSuccessPage extends StatelessWidget {
                     },
                     color: Color(0xff01A560),
                     style: ButtonStyle(
+                      // ignore: deprecated_member_use
                       backgroundColor: MaterialStateProperty.all(
                         Color(0xff01A560),
                       ),
+                      // ignore: deprecated_member_use
                       shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
