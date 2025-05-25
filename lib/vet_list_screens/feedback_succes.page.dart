@@ -17,15 +17,16 @@ class FeedbackSuccessPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Бизге билдирүү тапшаганыңыз',
+                'Бизге билдирүү таштаганыңыз үчүн чооң рахмат',
                 style: TextStyles.bTashtoo.copyWith(
-                  fontSize: 16,
+                  fontSize: 19,
                   fontWeight: FontWeight.w600,
                 ),
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 10),
               Text(
-                'учун чоон рахмат.Ветеринар суроолорунузга жакынкы убакытта жооп берет.Куто турунуз',
+                'Ветеринар суроолорунузга жакынкы убакытта жооп берет.Куто турунуз',
                 textAlign: TextAlign.center,
                 style: TextStyles.buttonTextStyle.copyWith(
                   color: Colors.black,
